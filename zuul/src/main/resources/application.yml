@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${HOST:localhost}:8761/eureka
+  instance:
+    preferIpAddress: true
+
+zuul:
+  routes:
+    greeting:
+      path: /greeting-service/**
+      serviceId: greeting
+  host:
+    socket-timeout-millis: 30000
