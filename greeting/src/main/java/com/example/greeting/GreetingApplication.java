@@ -1,5 +1,6 @@
 package com.example.greeting;
 
+import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -21,5 +22,10 @@ public class GreetingApplication {
 	@LoadBalanced
 	RestTemplate getRestTemplate() {
 		return new RestTemplate();
+	}
+
+	@Bean
+	public Sampler defaultSampler() {
+		return Sampler.ALWAYS_SAMPLE;
 	}
 }
